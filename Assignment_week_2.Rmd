@@ -1,0 +1,49 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# October 17, 2020
+
+## Several sights of my city
+
+```{r echo=FALSE, message=FALSE}
+library(leaflet)
+
+places <- data.frame(stringsAsFactors=FALSE,
+                     latitude = c(50.013727, 50.0021417, 50.0001176, 50.0267216,
+                             49.9925471, 49.990573, 49.9808776, 49.9899102,
+                             50.0031652, 50.0053946, 49.9912325, 50.0101402,
+                             49.9988999, 49.9920232, 49.9964066),
+                     longitude = c(36.2248356, 36.2273423, 36.2270073, 36.2315117,
+                             36.2316839, 36.2240397, 36.2615479, 36.2306933,
+                             36.2248593, 36.2362041, 36.2305354, 36.2244793,
+                             36.2385268, 36.2298274, 36.2332277),
+                     color = c("red", "green", "red", "green", "blue", "brown",
+                           "red", "brown", "green", "blue", "blue", "blue",
+                           "blue", "brown", "brown"),
+                     popup = c(
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d3263477-Reviews-Gorky_Central_Park_of_Culture_and_Leisure-Kharkiv_Kharkiv_Oblast.html'>Gorky Central Park of Culture and Leisure</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d1875894-Reviews-Shevchenko_Park-Kharkiv_Kharkiv_Oblast.html'>Shevchenko Park</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d1599796-Reviews-Kharkov_Dolphinarium-Kharkiv_Kharkiv_Oblast.html'>Kharkov Dolphinarium</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d2277097-Reviews-Botanical_Gardens-Kharkiv_Kharkiv_Oblast.html'>Botanical Gardens</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d600383-Reviews-Kharkiv_Historical_Museum-Kharkiv_Kharkiv_Oblast.html'>Kharkiv Historical Museum</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d2486349-Reviews-Annunciation_Cathedral-Kharkiv_Kharkiv_Oblast.html'>Annunciation Cathedral</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d6518154-Reviews-Metallist_Stadium-Kharkiv_Kharkiv_Oblast.html'>Metallist Stadium</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d3263429-Reviews-Assumption_Cathedral-Kharkiv_Kharkiv_Oblast.html'>Assumption Cathedral</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d2172806-Reviews-Kharkov_Zoo-Kharkiv_Kharkiv_Oblast.html'>Kharkiv Zoo</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d6518155-Reviews-Avec_Fine_Arts_Gallery-Kharkiv_Kharkiv_Oblast.html'>Avec Fine Arts Gallery</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d9798348-Reviews-Palladium-Kharkiv_Kharkiv_Oblast.html'>Palladium</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d8750611-Reviews-COME_IN_Art_Gallery-Kharkiv_Kharkiv_Oblast.html'>COME IN Art Gallery</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d3263398-Reviews-Kharkiv_City_Fine_Arts_Gallery-Kharkiv_Kharkiv_Oblast.html'>Kharkiv City Fine Arts Gallery</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d3263441-Reviews-The_Pokrovsky_Cathedral-Kharkiv_Kharkiv_Oblast.html'>The Pokrovsky Cathedral</a>",
+        "<a href='https://www.tripadvisor.com/Attraction_Review-g295369-d6518162-Reviews-Madonna_Assumption_Rome_Catholic_Church-Kharkiv_Kharkiv_Oblast.html'>Madonna Assumption Rome Catholic Church</a>"
+                     ))
+
+places %>%
+        leaflet() %>%
+        addTiles() %>%
+        addCircleMarkers(color = places$color, popup = places$popup) %>%
+        addLegend(labels = c("Attractions", "Nature and Parks",
+                             "Cathedrals", "Museums and Galleries"),
+                  colors = c("red", "green", "brown", "blue"))
+```
