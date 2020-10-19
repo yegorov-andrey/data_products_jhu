@@ -1,0 +1,29 @@
+---
+title: "Growth of Orange Trees (Plotly)"
+author: "Andrey Yegorov"
+date: "10/19/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Growth of Orange Trees
+```{r message=FALSE, warning=FALSE}
+library(datasets)
+library(plotly)
+library(GGally)
+data(Orange)
+```
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+ggpairs(data=Orange, aes(colour=Tree), columns=2:3) %>% ggplotly()
+```
+
+## Conclusions
+
+On previous figure we saw high correlation between orange trees' 
+age and circumference. Further steps may be fitting a linear model to predict 
+orange tree's age based on its circumference.
+
+Thank you for attention :)
